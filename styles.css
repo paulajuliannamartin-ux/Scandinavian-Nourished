@@ -1,0 +1,94 @@
+:root {
+  --bg: #3b241a;
+  --ink: #d1c0ab;
+  --ink-muted: #c6b39d;
+  --focus: #e4d8c8;
+  --link-underline: rgba(209,192,171,0.35);
+  --maxw: 56rem;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100dvh;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 8svh 1.25rem 2rem;
+  display: grid;
+  gap: 5rem;
+  place-items: center;
+  text-align: center;
+}
+
+header { width: 100%; }
+
+.brand {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5rem;
+}
+.tagline {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  width: min(26rem, 92%);
+}
+.menu a {
+  display: block;
+  padding: 0.9rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid rgba(209, 192, 171, 0.18);
+  background: rgba(209, 192, 171, 0.04);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+.menu a:hover { transform: translateY(-1px); }
+.menu a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus);
+  background: rgba(209, 192, 171, 0.08);
+}
+
+.menu a span {
+  background: linear-gradient(transparent 70%, var(--link-underline) 0);
+  background-size: 100% 200%;
+  background-position: 0 0;
+  transition: background-position 220ms ease;
+}
+.menu a:hover span { background-position: 0 100%; }
+
+footer {
+  color: var(--ink-muted);
+  padding: 2rem 1.25rem 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu a, .menu a span { transition: none; }
+}
