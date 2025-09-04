@@ -1,29 +1,31 @@
-// Nuvarande år i foten
-document.getElementById('year').textContent = new Date().getFullYear();
+// Fyller i aktuellt år
+document.getElementById("year").textContent = new Date().getFullYear();
 
-// Enkel client-side routing
-const routes = {
-  articles: () => alert('Här kommer ARTICLES: artiklar, recept och listor.'),
-  spotify:  () => alert('Här bäddar du in dina Spotify-listor eller länkar till dem.'),
-  shop:     () => alert('Här säljer du dina PDF-guider. Byt senare till riktig checkout.'),
-  newsletter: () => alert('Nyhetsbrev: 1 € / år. Koppla t.ex. Buttondown, Mailchimp eller ConvertKit.')
-};
+// Exempel-poster (kan bytas ut mot Sanity senare)
+const blogPosts = [
+  { title: "A calm morning ritual", image: "https://via.placeholder.com/400x250", excerpt: "Simple ways to start your day with ease." },
+  { title: "Slow living inspiration", image: "https://via.placeholder.com/400x250", excerpt: "Ideas for finding balance in a busy world." }
+];
 
-document.querySelectorAll('[data-route]').forEach(el => {
-  el.addEventListener('click', (e) => {
-    const k = el.getAttribute('data-route');
-    if (routes[k]) {
-      e.preventDefault();
-      routes[k]();
-    }
+const recipePosts = [
+  { title: "Italian Red Pasta", image: "https://via.placeholder.com/400x250", excerpt: "A warm and nourishing recipe with rich flavors." },
+  { title: "Green Garden Salad", image: "https://via.placeholder.com/400x250", excerpt: "Fresh, crisp, and perfectly simple." }
+];
+
+function renderPosts(posts, selector) {
+  const container = document.querySelector(selector);
+  posts.forEach(post => {
+    const el = document.createElement("div");
+    el.className = "post";
+    el.innerHTML = `
+      <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:8px;" />
+      <h3>${post.title}</h3>
+      <p>${post.excerpt}</p>
+    `;
+    container.appendChild(el);
   });
-});
+}
 
-// Tangentbordsgenväg: tryck "/" för att fokusera första länken
-document.addEventListener('keydown', (e) => {
-  if (e.key === '/') {
-    e.preventDefault();
-    const first = document.querySelector('.menu a');
-    if (first) first.focus();
-  }
-});
+renderPosts(blogPosts, ".blog .post-grid");
+renderPosts(recipePosts, ".recipes .post-grid");
+
