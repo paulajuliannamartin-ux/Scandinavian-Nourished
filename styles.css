@@ -1,72 +1,101 @@
 :root {
-  --bg: #3b241a;
-  --ink: #d1c0ab;
-  --ink-muted: #c6b39d;
-  --focus: #e4d8c8;
-  --link-underline: rgba(209,192,171,0.35);
-  --maxw: 56rem;
+  --brown: #3b241a;
+  --beige: #eae4dc;
+  --green: #2f4f4f;
+  --red: #8b2f2f;
+  --vanilla: #f8f4ef;
+  --text: #1c1c1c;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  line-height: 1.55;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
+  font-family: "Georgia", serif;
+  background: var(--brown);
+  color: var(--beige);
+  line-height: 1.6;
 }
 
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 8svh 1.25rem 2rem;
-  display: grid;
-  gap: 3rem;
-  place-items: center;
-  text-align: center;
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--brown);
+  color: var(--beige);
+  position: sticky;
+  top: 0;
 }
 
-.brand {
-  font-family: Georgia, serif;
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  font-weight: 600;
-  margin: 0 0 0.5rem;
-}
-.tagline {
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+.logo {
+  font-size: 1.5rem;
 }
 
-.menu {
+.main-nav ul {
   list-style: none;
+  display: flex;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: 2rem; /* avstånd mellan länkarna */
-  justify-content: center;
 }
-.menu a {
+
+.main-nav a {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--beige);
   font-weight: 600;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: color 180ms ease;
 }
-.menu a:hover { color: var(--ink-muted); }
-.menu a:focus-visible {
-  outline: none;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
+
+.main-nav a:hover {
+  color: var(--vanilla);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--brown);
+  color: var(--beige);
+}
+
+/* Sections */
+.content-section {
+  padding: 3rem 2rem;
+}
+
+.blog {
+  background: var(--beige);
+  color: var(--text);
+}
+
+.recipes {
+  background: var(--vanilla);
+  color: var(--text);
+}
+
+.about {
+  background: var(--green);
+  color: var(--vanilla);
+}
+
+.post-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin-top: 2rem;
+}
+
+.post-grid .post {
+  background: white;
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 footer {
-  color: var(--ink-muted);
-  padding: 2rem 1.25rem 3rem;
   text-align: center;
-  font-size: 0.9rem;
+  padding: 2rem;
+  background: var(--brown);
+  color: var(--beige);
 }
